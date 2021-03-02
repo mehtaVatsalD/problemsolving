@@ -12,7 +12,7 @@ public class SameLetterLongSubStr{
 	
 	public static int getSameLetterLongSubStr(String str, int k){
 		System.out.println("Str: " + str + " k: " + k);
-		if(str == null && "".equals(str)){
+		if(str == null || "".equals(str)){
 			return 0;
 		}
 		
