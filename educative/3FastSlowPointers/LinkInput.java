@@ -42,8 +42,7 @@ public class LinkInput {
 			throw new RuntimeException("Invalid place to create cycle in link list");
 		}
 		prev.next = thisOne;
-		return thisOne;		
-		
+		return thisOne;
 	}
 	
 }

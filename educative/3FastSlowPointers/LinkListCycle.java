@@ -15,6 +15,8 @@ public class LinkListCycle {
 		if(meetPoint != null) {
 			System.out.println("Loop detected!");
 			System.out.println("Length of loop: " + sol.lenghtOfLoop(first));
+			Node startPos = sol.startOfCycle(first);
+			System.out.println("Loop start is " + startPos.val + " away from start of link list and value where is starts is " + startPos.next.val);
 		}
 		else {
 			System.out.println("No loop detected!");
@@ -49,6 +51,24 @@ class Solution {
 		}
 		while(ptr != loopMeet);
 		return cnt;
+	}
+	
+	
+	public Node startOfCycle(Node first) {
+		Node loopMeet = isLinkListCyclic(first);
+		if(loopMeet == null) {
+			return null;
+		}
+		Node ptr = first;
+		int cnt = 0;
+		while(ptr != loopMeet) {
+			cnt++;
+			ptr = ptr.next;
+			loopMeet = loopMeet.next;
+		}
+		Node pos = new Node(cnt);
+		pos.next = ptr;
+		return pos;
 	}
 
 	public Node isLinkListCyclic(Node first) {
