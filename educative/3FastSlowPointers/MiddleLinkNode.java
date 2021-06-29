@@ -9,7 +9,7 @@ public class MiddleLinkNode {
 		System.out.println(middleNode.val);
 	}
 	
-	private static Node getMiddleNodeInLinkList(Node first) {
+	public static Node getMiddleNodeInLinkList(Node first) {
 		Node fast = first;
 		Node slow = first;
 		while(fast.next != null) {

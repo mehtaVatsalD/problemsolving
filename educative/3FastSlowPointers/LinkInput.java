@@ -45,4 +45,12 @@ public class LinkInput {
 		return thisOne;
 	}
 	
+	public void printLinkList(Node first) {
+		while(first!=null) {
+			System.out.print(first.val + " ");
+			first = first.next;
+		}
+		System.out.println();
+	}
+	
 }
