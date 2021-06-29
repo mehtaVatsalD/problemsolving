@@ -8,7 +8,7 @@ public class ReverseLinkList {
 		ip.printLinkList(first);
 	}
 	
-	public Node reverseLinkList(Node first) {
+	public static Node reverseLinkList(Node first) {
 		Node prev = null;
 		Node cur = null;
 		Node next = first;

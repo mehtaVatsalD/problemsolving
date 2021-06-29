@@ -7,6 +7,10 @@ public class RearrangeLinkList {
 		rearrangeLinkListAlt(first);
 		ip.printLinkList(first);
 		
+		first = ip.takeInput();
+		ip.printLinkList(first);
+		rearrangeLinkListAltRev(first);
+		ip.printLinkList(first);		
 	}
 
 	private static void rearrangeLinkListAlt(Node first) {
@@ -19,6 +23,22 @@ public class RearrangeLinkList {
 			temp.next = next;
 			temp = next.next;
 		}
+	}
+	
+	private static void rearrangeLinkListAltRev(Node first) {
+		Node middle = MiddleLinkNode.getMiddleNodeInLinkList(first);
+        Node last = ReverseLinkList.reverseLinkList(middle.next);
+        middle.next = null;
+		Node temp = first;
+		while(last != null) {
+			Node next = first.next;
+            first.next = last;
+            last = last.next;
+            first = first.next;
+            first.next = next;
+            first = first.next;
+		}
+        
 	}
 
 }
