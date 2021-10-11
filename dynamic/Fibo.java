@@ -1,9 +1,9 @@
 public class Fibo {
 
 	public static void main(String...args) {
-		System.out.println(fibo(6));
-		System.out.println(fibo(8));
-		System.out.println(fibo(50));
+		System.out.println(fiboTab(6));
+		System.out.println(fiboTab(8));
+		System.out.println(fiboTab(50));
 	}
 	
 	/* Brute Force approach
@@ -17,8 +17,25 @@ public class Fibo {
 		return fiboBruteForce(n-1) + fiboBruteForce(n-2);
 	}
 	
+	/* Dynamic Prog. tabulation approach
+	 * Time complexity - O(N)
+	 * Space complexity - O(N)
+	 */
+	private static long fiboTab(int n) {
+		if(n == 0 || n == 1) {
+			return n;
+		}
+		long[] table = new long[n+1];
+		table[0] = 0;
+		table[1] = 1;
+		for(int i=2; i<=n; i++) {
+			table[i] = table[i-1] + table[i-2];
+		}
+		return table[n];
+	}
+	
 	/* Dynamic Prog. memoization approach
-	 * Time complexity - O(2^N)
+	 * Time complexity - O(N)
 	 * Space complexity - O(N)
 	 */
 	private static long fibo(int n) {
