@@ -10,6 +10,7 @@ public class BestSumTab {
 		System.out.println(Arrays.toString(bestSum(new int[]{2,1}, 5)));
 		System.out.println(Arrays.toString(bestSum(new int[]{7, 14}, 300)));
 		System.out.println(Arrays.toString(bestSum(new int[]{7, 11}, 300)));
+		System.out.println(Arrays.toString(bestSum(new int[]{25, 1, 2, 5}, 100)));
 		/*
 			[7]
 			null
