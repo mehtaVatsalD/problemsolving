@@ -67,14 +67,14 @@ public class ZeroOneKnapSack {
 		//O(N*W) space
 		/*
 		public int solveZeroOneKnapSack(int[] wts, int[] vals, int w) {
-			int[][] memo = new int[vals.length][w+1];
+			int[][] memo = new int[vals.length+1][w+1];
 			for (int i=0; i<vals.length; i++) {
 				for (int j=0; j<=w; j++) {
 					if (i == 0 || j == 0) {
 						memo[i][j] = 0;
-					} else if (wts[i] <= j) {
+					} else if (wts[i-1] <= j) {
 						memo[i][j] = Math.max(
-							vals[i] + memo[i-1][j-wts[i]],
+							vals[i-1] + memo[i-1][j-wts[i-1]],
 							memo[i-1][j]
 						);
 					} else {
@@ -83,7 +83,7 @@ public class ZeroOneKnapSack {
 				}
 			}
 			printSelectedElements(memo, wts, vals, w);
-			return memo[vals.length-1][w];
+			return memo[vals.length][w];
 		}
 		*/
 		
@@ -91,13 +91,13 @@ public class ZeroOneKnapSack {
 		/*
 		public int solveZeroOneKnapSack(int[] wts, int[] vals, int w) {
 			int[] memo = new int[w+1];
-			for (int i=0; i<vals.length; i++) {
+			for (int i=0; i<=vals.length; i++) {
 				for (int j=w; j>=0; j--) {
 					if (i == 0 || j == 0) {
 						memo[j] = 0;
-					} else if (wts[i] <= j) {
+					} else if (wts[i-1] <= j) {
 						memo[j] = Math.max(
-							vals[i] + memo[j-wts[i]],
+							vals[i-1] + memo[j-wts[i-1]],
 							memo[j]
 						);
 					} else {
@@ -112,13 +112,13 @@ public class ZeroOneKnapSack {
 		//O(N) space - two arrays
 		public int solveZeroOneKnapSack(int[] wts, int[] vals, int w) {
 			int[][] memo = new int[2][w+1];
-			for (int i=0; i<vals.length; i++) {
+			for (int i=0; i<=vals.length; i++) {
 				for (int j=w; j>=0; j--) {
 					if (i == 0 || j == 0) {
 						memo[i%2][j] = 0;
-					} else if (wts[i] <= j) {
+					} else if (wts[i-1] <= j) {
 						memo[i%2][j] = Math.max(
-							vals[i] + memo[(i-1)%2][j-wts[i]],
+							vals[i-1] + memo[(i-1)%2][j-wts[i-1]],
 							memo[(i-1)%2][j]
 						);
 					} else {
@@ -126,19 +126,19 @@ public class ZeroOneKnapSack {
 					}
 				}
 			}
-			return memo[(vals.length-1)%2][w];
+			return memo[(vals.length)%2][w];
 		}
 		
 		
 		private void printSelectedElements(int[][] memo, int[] wts, int[] vals, int w) {
-			int i = vals.length-1;
+			int i = vals.length;
 			int j = w;
 			while(memo[i][j] != 0) {
 				if (memo[i][j] == memo[i-1][j]) {
 					i--;
 				} else {
-					System.out.print(wts[i] + " ");
-					j -= wts[i];
+					System.out.print(wts[i-1] + " ");
+					j -= wts[i-1];
 					i--;
 				}
 			}
