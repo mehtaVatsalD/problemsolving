@@ -1,7 +1,7 @@
 public class SubsetSum {
 	
 	public static void main(String...args) {
-		int sum = InputCommons.ipIntNum(); //totoal sum
+		int sum = InputCommons.ipIntNum(); //total sum
 		int n = InputCommons.ipIntNum(); //number of items in set	
 	
 		int[] vals = InputCommons.ipIntArr(n);
