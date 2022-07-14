@@ -13,19 +13,26 @@ public class Solution {
       arr[i] = scan.nextInt();
       i++;
     }
-    System.out.println(Arrays.toString(sol.sort(arr)));
+    System.out.println(sol.findMissingNumber(arr));
 
 	}
 
-  private int[] sort(int[] arr) {
-    int n = arr.length;
+  private int findMissingNumber(int[] nums) {
+    int n = nums.length;
     for(int i=0; i<n; i++) {
-      while(i+1 != arr[i]) {
-        swap(arr, i, arr[i]-1);
+      while (i != nums[i] && nums[i] != n) {
+        swap(nums, i, nums[i]);
       }
     }
-    return arr;
 
+    // System.out.println(Arrays.toString(nums));
+
+    for(int i=0; i<n; i++) {
+      if (nums[i] != i) {
+        return i;
+      }
+    }
+    return n;
   }
 
   private void swap(int[] arr, int i, int j) {
