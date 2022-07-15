@@ -23,5 +23,9 @@ public class InputCommons {
 		int size = ipIntNum();
 		return ipIntArr(size);
 	}
+	
+	public static String ipStr() {
+		return scanner.next();
+	}
 
 }
